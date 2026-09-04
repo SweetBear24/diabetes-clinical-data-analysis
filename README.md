@@ -74,7 +74,7 @@ diabetes-clinical-risk-analysis/
 
 ## 🔍 Data Quality Audit & Artifact Detection
 
-### 4.1 Exact Duplicates Audit (SQL 1.1)
+### Exact Duplicates Audit (SQL 1.1)
 
 An exact multi-column row audit revealed duplicate patient records. In clinical registries, identical demographic and biometric profiles (identical age, gender, BMI, HbA1c, glucose, and medical history) indicate duplicate transmission during data ingestion.
 
@@ -97,7 +97,7 @@ ORDER BY duplicate_count DESC;
 
 ---
 
-### 4.2 Infant Subgroup Screening — age < 2 (SQL 1.2)
+### Infant Subgroup Screening — age < 2 (SQL 1.2)
 
 To ensure pediatric physiological metrics do not skew overall adult percentile calculations, an isolated screening was performed for infants under 2 years old.
 
@@ -115,11 +115,10 @@ WHERE age < 2;
 |---|---|---|
 | 2,101 | 17.97 | 17.09 |
 
-> **Analytical Finding:** Infant BMI metrics (Mean = 17.97 kg/m²) remain within expected pediatric growth curves and do not introduce severe skewness into adult obesity metrics.
-
+**Analytical Finding:** Infant BMI metrics (Mean = 17.97 kg/m²) remain within expected pediatric growth curves and do not introduce severe skewness into adult obesity metrics.
 ---
 
-### 4.3 Summary Statistics & Imputation Artifact Detection (SQL 1.3)
+### Summary Statistics & Imputation Artifact Detection (SQL 1.3)
 
 Both parametric (AVG) and non-parametric (MEDIAN via PERCENTILE_CONT) aggregates were calculated to detect distributional skewness and data artifacts.
 

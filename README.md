@@ -56,13 +56,15 @@ diabetes-clinical-risk-analysis/
 │   └── 03_risk_scoring_model.sql
 │
 ├── images/
-│   ├── duplicates_audit.png
-│   ├── bmi_distribution.png
-│   ├── bmi_distribution_log.png
-│   ├── hba1c_distribution.png
-│   ├── glucose_distribution.png
-│   ├── cohort_comparison.png
-│   └── risk_stratification.png
+│   ├── Age_Audit_&_Infant_Screening..png
+│   ├── BMI_Distribution_&_Data_Quality_Audit(1).png
+│   ├── BMI_Distribution_&_Data_Quality_Audit(2).png
+│   ├── Blood_Glucose_Level_Distribution_&_Data_Quality_Audit.png
+│   ├── Cohort_Comparison_(Healthy_vs_Diabetic)..png
+│   ├── Data_Quality_&_Duplicates_Audit.png
+│   └── Distribution_of_Patient_Body_Mass_Index_(BMI).png
+│   └── HbA1c_Level_Distribution_&_Data_Quality_Audit.png
+│   └── Risk_Scoring_&_Stratification.png
 │
 ├── data/
 │   └── sample_diabetes_dataset.csv

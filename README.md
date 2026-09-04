@@ -92,7 +92,7 @@ HAVING COUNT(*) > 1
 ORDER BY duplicate_count DESC;
 ```
 
-![Data Quality & Duplicates Audit](image/Data_Quality_&_Duplicates_Audit.png)
+![Data Quality & Duplicates Audit](images/Data_Quality_&_Duplicates_Audit.png)
 > 96.14% of records are clean (96,143 unique) · 3.86% are duplicates (3,857 records)
 
 ---

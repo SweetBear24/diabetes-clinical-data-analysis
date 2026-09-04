@@ -76,7 +76,7 @@ diabetes-clinical-risk-analysis/
 
 ### 4.1 Exact Duplicates Audit (SQL 1.1)
 
-An exact multi-column row audit revealed **3,854 duplicate patient records**. In clinical registries, identical demographic and biometric profiles (identical age, gender, BMI, HbA1c, glucose, and medical history) indicate duplicate transmission during data ingestion.
+An exact multi-column row audit revealed duplicate patient records. In clinical registries, identical demographic and biometric profiles (identical age, gender, BMI, HbA1c, glucose, and medical history) indicate duplicate transmission during data ingestion.
 
 ```sql
 -- 1.1 Duplicate Records Identification
@@ -115,7 +115,7 @@ WHERE age < 2;
 |---|---|---|
 | 2,101 | 17.97 | 17.09 |
 
-> **Analytical Finding:** Infant BMI metrics (Mean ≈ 20.1 kg/m²) remain within expected pediatric growth curves and do not introduce severe skewness into adult obesity metrics.
+> **Analytical Finding:** Infant BMI metrics (Mean = 17.97 kg/m²) remain within expected pediatric growth curves and do not introduce severe skewness into adult obesity metrics.
 
 ---
 
@@ -155,8 +155,8 @@ FROM diabetes_prediction_dataset;
 | Metric | Minimum | Mean | Median | Maximum | Artifact Note |
 |---|---|---|---|---|---|
 | BMI (kg/m²) | 10.01 | 27.32 | 27.32 | 95.69 | Synthetic cluster at 27.32 (Median Imputation) |
-| Blood Glucose (mg/dL) | 80.00 | 138.06 | 140.00 | 300.00 | Discrete clinical measurement bands |
 | HbA1c Level (%) | 3.50 | 5.53 | 5.80 | 9.00 | Concentrated at clinical testing intervals |
+| Blood Glucose (mg/dL) | 80.00 | 138.06 | 140.00 | 300.00 | Discrete clinical measurement bands |
 
 > **Analytical Finding:** The identical Mean and Median values for BMI (27.32) reveal that missing BMI entries in the raw dataset were imputed using the dataset median. A logarithmic scale was applied in Tableau to make this artifact visible.
 
@@ -202,20 +202,21 @@ GROUP BY diabetes;
 | Metric | Non-Diabetic (0) | Diabetic (1) | Delta (%) | Clinical Implication |
 |---|---|---|---|---|
 | Patient Population | 91,500 (91.5%) | 8,500 (8.5%) | — | Base dataset prevalence rate: 8.5% |
-| Mean HbA1c (%) | 5.40% | 6.90% | +27.8% | Exceeds diagnostic threshold (≥ 6.5%) |
+| Mean HbA1c (%) | 5.40% | 6.93% | +28.3% | Exceeds ADA diagnostic threshold (≥ 6.5%) |
 | Median HbA1c (%) | 5.80% | 6.60% | +13.8% | Confirms sustained glycemic elevation |
-| Mean Blood Glucose (mg/dL) | 132.90 | 194.10 | +46.0% | Pronounced acute fasting hyperglycemia |
-| Median Blood Glucose (mg/dL) | 130.00 | 200.00 | +53.8% | Severe shift toward upper diagnostic boundaries |
-| Mean BMI (kg/m²) | 26.88 | 31.99 | +19.0% | Diabetic cohort shifts into Class I Obesity (≥ 30.0) |
+| Mean Blood Glucose (mg/dL) | 132.85 | 194.09 | +46.1% | Pronounced acute fasting hyperglycemia |
+| Median Blood Glucose (mg/dL) | 140.00 | 160.00 | +14.3% | Shift toward upper clinical diagnostic boundaries |
+| Mean BMI (kg/m²) | 26.89 | 31.99 | +19.0% | Diabetic cohort shifts into Class I Obesity (≥ 30.0) |
+| Median BMI (kg/m²) | 27.32 | 29.97 | +9.7% | Confirms obesity co-factor in diabetic cohort |
 
 ![Cohort Comparison](images/cohort_comparison.png)
 > HbA1c: 5.4% (healthy) vs 6.9% (diabetic) · Blood Glucose: 132.9 vs 194.1 mg/dL · BMI: 26.9 vs 32.0
 
 **Key Clinical Insights:**
 
-- **HbA1c Threshold Breach:** Diabetic patients exhibit a mean HbA1c of 6.9%, breaching the ADA diagnostic threshold of 6.5%, whereas healthy patients remain well within normal limits (5.4%)
-- **Acute Hyperglycemia:** Fasting blood glucose demonstrates the largest divergence — +46.0% (194.1 vs 132.9 mg/dL), confirming glucose as the most immediate acute biomarker
-- **Obesity Co-factor:** Mean BMI shifts from overweight status (26.88 kg/m²) in healthy individuals to Class I Obesity (31.99 kg/m²) in diabetic patients, underscoring metabolic syndrome coupling
+- **HbA1c Threshold Breach:** Diabetic patients exhibit a mean HbA1c of 6.93%, breaching the ADA diagnostic threshold of 6.5%, whereas healthy patients remain well within normal limits (5.40%)
+- **Acute Hyperglycemia:** Fasting blood glucose demonstrates the largest mean divergence — +46.1% (194.09 vs 132.85 mg/dL), confirming glucose as the most immediate acute biomarker
+- **Obesity Co-factor:** Mean BMI shifts from overweight status (26.89 kg/m²) in healthy individuals to Class I Obesity (31.99 kg/m²) in diabetic patients, underscoring metabolic syndrome coupling
 
 ---
 

@@ -160,17 +160,17 @@ FROM diabetes_prediction_dataset;
 
 > **Analytical Finding:** The identical Mean and Median values for BMI (27.32) reveal that missing BMI entries in the raw dataset were imputed using the dataset median. A logarithmic scale was applied in Tableau to make this artifact visible.
 
+**HbA1c Level Distribution:**
+![HbA1c Distribution](images/HbA1c_Level_Distribution_&_Data_Quality_Audit.png)
+> Bimodal distribution — concentration at 6.0–6.5% confirms the ADA pre-diabetic diagnostic band
 **BMI Distribution (linear scale):**
-![BMI Distribution](images/BMI_Distribution_&_Data_Quality_Audit(2).png)
+![BMI Distribution](images/Distribution_of_Patient_Body_Mass_Index_(BMI).png)
 > 🟢 Green = Normal/Overweight (BMI < 30) · 🟠 Orange = Obesity (BMI ≥ 30)
 
 **BMI Distribution (log scale — reveals imputation spike at 27.32):**
 ![BMI Distribution Log Scale](images/BMI_Distribution_&_Data_Quality_Audit(1).png)
 > The dark spike at BMI = 27.32 confirms median imputation artifact — 33,884 patients clustered at exactly the same value
 
-**HbA1c Level Distribution:**
-![HbA1c Distribution](images/HbA1c_Level_Distribution_&_Data_Quality_Audit.png)
-> Bimodal distribution — concentration at 6.0–6.5% confirms the ADA pre-diabetic diagnostic band
 
 **Blood Glucose Level Distribution:**
 ![Blood Glucose Distribution](images/Blood_Glucose_Level_Distribution_&_Data_Quality_Audit.png)
@@ -313,7 +313,7 @@ psql -d clinical_analytics -f sql/03_risk_scoring_model.sql
 ## 👤 Author
 
 **SweetBear24**  
-Data Analyst  
+Data Analyst   
 [LinkedIn](#) · [GitHub](#) · [Tableau Public](#)
 
 ---

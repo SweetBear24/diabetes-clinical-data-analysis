@@ -92,7 +92,7 @@ HAVING COUNT(*) > 1
 ORDER BY duplicate_count DESC;
 ```
 
-![Data Quality & Duplicates Audit](image/Data Quality & Duplicates Audit.png)
+![Data Quality & Duplicates Audit](image/Data_Quality_&_Duplicates_Audit.png)
 > 96.14% of records are clean (96,143 unique) · 3.86% are duplicates (3,857 records)
 
 ---
@@ -161,19 +161,19 @@ FROM diabetes_prediction_dataset;
 > **Analytical Finding:** The identical Mean and Median values for BMI (27.32) reveal that missing BMI entries in the raw dataset were imputed using the dataset median. A logarithmic scale was applied in Tableau to make this artifact visible.
 
 **BMI Distribution (linear scale):**
-![BMI Distribution](images/bmi_distribution.png)
+![BMI Distribution](images/BMI_Distribution_&_Data_Quality_Audit(2).png)
 > 🟢 Green = Normal/Overweight (BMI < 30) · 🟠 Orange = Obesity (BMI ≥ 30)
 
 **BMI Distribution (log scale — reveals imputation spike at 27.32):**
-![BMI Distribution Log Scale](images/bmi_distribution_log.png)
+![BMI Distribution Log Scale](images/BMI_Distribution_&_Data_Quality_Audit(1).png)
 > The dark spike at BMI = 27.32 confirms median imputation artifact — 33,884 patients clustered at exactly the same value
 
 **HbA1c Level Distribution:**
-![HbA1c Distribution](images/hba1c_distribution.png)
+![HbA1c Distribution](images/HbA1c_Level_Distribution_&_Data_Quality_Audit.png)
 > Bimodal distribution — concentration at 6.0–6.5% confirms the ADA pre-diabetic diagnostic band
 
 **Blood Glucose Level Distribution:**
-![Blood Glucose Distribution](images/glucose_distribution.png)
+![Blood Glucose Distribution](images/Blood_Glucose_Level_Distribution_&_Data_Quality_Audit.png)
 > Discrete measurement bands (80–160 mg/dL normal range, 200+ mg/dL diabetic range) confirm clinical testing protocols
 
 ---
@@ -209,7 +209,7 @@ GROUP BY diabetes;
 | Mean BMI (kg/m²) | 26.89 | 31.99 | +19.0% | Diabetic cohort shifts into Class I Obesity (≥ 30.0) |
 | Median BMI (kg/m²) | 27.32 | 29.97 | +9.7% | Confirms obesity co-factor in diabetic cohort |
 
-![Cohort Comparison](images/cohort_comparison.png)
+![Cohort Comparison](images/Cohort_Comparison_(Healthy_vs_Diabetic)..png)
 > HbA1c: 5.4% (healthy) vs 6.9% (diabetic) · Blood Glucose: 132.9 vs 194.1 mg/dL · BMI: 26.9 vs 32.0
 
 **Key Clinical Insights:**
@@ -259,7 +259,7 @@ ORDER BY patient_risk_group ASC;
 | 3. Moderate Risk / Pre-diabetic | 54.47% | 54,465 | 1,796 | 3.30% | Captures early pre-diabetic manifestation |
 | 4. High Risk / Diabetic | 28.04% | 28,039 | 6,704 | 23.91% | Captures 78.9% of all true positives |
 
-![Risk Scoring & Stratification](images/risk_stratification.png)
+![Risk Scoring & Stratification](images/Risk_Scoring_&_Stratification.png)
 > 🔴 Red = Diabetic · ⬜ Grey = Non-Diabetic · Tiers 1 & 2: zero false negatives
 
 **Model Validation Insights:**
@@ -312,8 +312,8 @@ psql -d clinical_analytics -f sql/03_risk_scoring_model.sql
 
 ## 👤 Author
 
-**[Твоё имя]**  
-Data Analyst Intern  
+**SweetBear24**  
+Data Analyst  
 [LinkedIn](#) · [GitHub](#) · [Tableau Public](#)
 
 ---
